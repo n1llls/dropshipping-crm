@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id            Int       @id @default(autoincrement())
+  name          String
+  supplierName  String
+  defaultCost   Float
+  defaultPrice  Float
+  variants      Variant[]
+  orders        OrderItem[]
+  spends        AdSpend[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Variant {
+  id           Int      @id @default(autoincrement())
+  product      Product  @relation(fields: [productId], references: [id])
+  productId    Int
+  name         String
+  sku          String?
+  purchaseCost Float
+  salePrice    Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  items        OrderItem[]
+}
+
+enum OrderStatus {
+  NEW
+  CONFIRMED
+  PACKED
+  SHIPPED
+  DELIVERED
+  CANCELED
+  RETURNED
+}
+
+model Order {
+  id           Int          @id @default(autoincrement())
+  customerName String
+  phone        String?
+  address      String
+  city         String?
+  region       String?
+  carrier      String?      // e.g., Nova Poshta
+  ttn          String?      // existing TTN
+  status       OrderStatus  @default(NEW)
+  items        OrderItem[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model OrderItem {
+  id             Int      @id @default(autoincrement())
+  order          Order    @relation(fields: [orderId], references: [id])
+  orderId        Int
+  product        Product  @relation(fields: [productId], references: [id])
+  productId      Int
+  variant        Variant? @relation(fields: [variantId], references: [id])
+  variantId      Int?
+  quantity       Int
+  purchaseCost   Float    // snapshot at time of sale
+  salePrice      Float    // snapshot at time of sale
+}
+
+model AdSpend {
+  id         Int      @id @default(autoincrement())
+  product    Product  @relation(fields: [productId], references: [id])
+  productId  Int
+  platform   String   // Google, Meta, etc.
+  date       DateTime
+  amount     Float
+  leads      Int      @default(0)
+  notes      String?
+  createdAt  DateTime @default(now())
+}
