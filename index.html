@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dropshipping CRM — PWA + Auth</title>
-  <link rel="manifest" href="./manifest.webmanifest">
-  <meta name="theme-color" content="#4f46e5">
+  <title>Dropshipping CRM — v2</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { primary: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'} }, boxShadow:{glow:'0 10px 30px rgba(99,102,241,0.25)'} } } }
@@ -20,6 +18,7 @@
 </head>
 <body class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 text-slate-900">
   <div id="app" class="max-w-7xl mx-auto p-4 md:p-8">
+
     <!-- AUTH -->
     <div id="auth" class="hidden">
       <div class="max-w-md mx-auto bg-white/80 backdrop-blur shadow-xl rounded-2xl p-6 md:p-8 border border-slate-200">
@@ -50,11 +49,10 @@
           <div class="h-11 w-11 rounded-2xl bg-white shadow-glow border border-slate-200 flex items-center justify-center"><i data-lucide="boxes" class="h-6 w-6 text-primary-700"></i></div>
           <div>
             <h1 class="text-xl md:text-2xl font-semibold">Dropshipping CRM</h1>
-            <p class="text-xs text-slate-500">PWA • Локальне зберігання • Аналітика</p>
+            <p class="text-xs text-slate-500">Локальне зберігання • Швидкий старт • Безкоштовно</p>
           </div>
         </div>
         <div class="flex items-center gap-2">
-          <button id="installBtn" style="display:none" class="px-3 py-2 rounded-xl bg-emerald-600 text-white">Установити</button>
           <button id="exportBtn" class="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 flex items-center gap-2"><i data-lucide="download" class="h-4 w-4"></i><span class="hidden sm:inline">Експорт</span></button>
           <label class="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
             <i data-lucide="upload" class="h-4 w-4"></i>
@@ -71,8 +69,8 @@
         <button data-tab="dashboard" class="tab-btn active px-4 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 transition">Аналітика</button>
         <button data-tab="products" class="tab-btn px-4 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 transition">Товари</button>
         <button data-tab="orders" class="tab-btn px-4 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 transition">Замовлення</button>
-        <button data-tab="ads" class="tab-btn px-4 py-2 rounded-xl bg-white border border-slate-200 hover:bg-сlate-50 transition">Реклама</button>
-        <button data-tab="settings" class="tab-btn px-4 py-2 rounded-xl bg-white border border-slate-200 hover:bg-сlate-50 transition">Налаштування</button>
+        <button data-tab="ads" class="tab-btn px-4 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 transition">Реклама</button>
+        <button data-tab="settings" class="tab-btn px-4 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 transition">Налаштування</button>
       </nav>
 
       <!-- DASHBOARD -->
@@ -212,7 +210,7 @@
                 </div>
                 <div>
                   <label class="block text-xs font-medium mb-1">К-сть</label>
-                  <input id="oQty" type="number" min="1" value="1" class="w-full rounded-xl border-сlate-300" />
+                  <input id="oQty" type="number" min="1" value="1" class="w-full rounded-xl border-slate-300" />
                 </div>
                 <div class="flex items-center gap-2">
                   <input id="oUpsell" type="checkbox" class="rounded" />
@@ -256,8 +254,8 @@
             <div class="flex items-center justify-between mb-3">
               <h3 class="font-semibold">Список замовлень</h3>
               <div class="flex gap-2">
-                <input id="orderSearch" placeholder="Пошук... (ім'я/ТТН)" class="rounded-xl border-сlate-300" />
-                <select id="statusFilter" class="rounded-xl border-сlate-300">
+                <input id="orderSearch" placeholder="Пошук... (ім'я/ТТН)" class="rounded-xl border-slate-300" />
+                <select id="statusFilter" class="rounded-xl border-slate-300">
                   <option value="">Всі статуси</option>
                   <option>Новий</option>
                   <option>Підтверджено</option>
@@ -300,22 +298,22 @@
               </div>
               <div>
                 <label class="block text-sm font-medium mb-1">Канал</label>
-                <input id="adChannel" class="w-full rounded-xl border-сlate-300" placeholder="Facebook, Google" />
+                <input id="adChannel" class="w-full rounded-xl border-slate-300" placeholder="Facebook, Google" />
               </div>
               <div>
                 <label class="block text-sm font-medium mb-1">Витрати (грн)</label>
-                <input id="adSpend" type="number" class="w-full rounded-xl border-сlate-300" />
+                <input id="adSpend" type="number" class="w-full rounded-xl border-slate-300" />
               </div>
               <div>
                 <label class="block text-sm font-medium mb-1">Лідів</label>
-                <input id="adLeads" type="number" class="w-full rounded-xl border-сlate-300" />
+                <input id="adLeads" type="number" class="w-full rounded-xl border-slate-300" />
               </div>
             </div>
             <button id="addAdBtn" class="w-full py-2.5 rounded-xl bg-primary-600 text-white hover:bg-primary-700">Зберегти</button>
           </div>
 
           <div class="bg-white border border-slate-200 rounded-2xl p-4 md:p-6 shadow-sm">
-            <div class="flex items-center justify_between mb-3">
+            <div class="flex items-center justify-between mb-3">
               <h3 class="font-semibold">Журнал реклами</h3>
               <div class="text-sm text-slate-600">CPL = Витрати / Ліди</div>
             </div>
@@ -346,15 +344,15 @@
             <div class="grid md:grid-cols-3 gap-3">
               <div>
                 <label class="block text-sm font-medium mb-1">Назва магазину</label>
-                <input id="shopName" class="w-full rounded-xl border-сlate-300" placeholder="ToolMark" />
+                <input id="shopName" class="w-full rounded-xl border-slate-300" placeholder="ToolMark" />
               </div>
               <div>
                 <label class="block text-sm font-medium mb-1">Валюта (позначення)</label>
-                <input id="currency" class="w-full rounded-xl border-сlate-300" placeholder="грн" />
+                <input id="currency" class="w-full rounded-xl border-slate-300" placeholder="грн" />
               </div>
               <div>
                 <label class="block text-sm font-medium mb-1">Мова інтерфейсу</label>
-                <select id="lang" class="w-full rounded-xl border-сlate-300">
+                <select id="lang" class="w-full rounded-xl border-slate-300">
                   <option value="uk">Українська</option>
                   <option value="ru">Русский</option>
                   <option value="en">English</option>
@@ -365,7 +363,7 @@
               <button id="saveSettingsBtn" class="px-4 py-2 rounded-xl bg-primary-600 text-white hover:bg-primary-700">Зберегти</button>
               <button id="resetAllBtn" class="px-4 py-2 rounded-xl bg-red-600 text-white hover:bg-red-700">Скинути всі дані</button>
             </div>
-            <p class="text-xs text-сlate-500">Дані зберігаються локально у вашому браузері. Використовуйте Експорт/Імпорт для резервних копій.</p>
+            <p class="text-xs text-slate-500">Дані зберігаються локально у вашому браузері. Використовуйте Експорт/Імпорт для резервних копій.</p>
           </div>
         </div>
       </section>
@@ -395,25 +393,16 @@
 
   <script>
     const $ = (s,p=document)=>p.querySelector(s); const $$=(s,p=document)=>[...p.querySelectorAll(s)]; const uid = ()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
-    const store={ key:'dropshipCRM_pwa', read(){ const raw=localStorage.getItem(this.key); if(!raw) return { users:[], session:null, settings:{shopName:'ToolMark',currency:'грн',lang:'uk'}, products:[], orders:[], ads:[], reports:[] }; try{ const d=JSON.parse(raw); if(!d.reports) d.reports=[]; return d }catch(e){ return { users:[], session:null, settings:{shopName:'Shop',currency:'грн',lang:'uk'}, products:[], orders:[], ads:[], reports:[] } } }, write(d){ localStorage.setItem(this.key, JSON.stringify(d)); }, reset(){ localStorage.removeItem(this.key); } };
+    const store={ key:'dropshipCRM_v2', read(){ const raw=localStorage.getItem(this.key); if(!raw) return { users:[], session:null, settings:{shopName:'ToolMark',currency:'грн',lang:'uk'}, products:[], orders:[], ads:[], reports:[] }; try{ const d=JSON.parse(raw); if(!d.reports) d.reports=[]; return d }catch(e){ return { users:[], session:null, settings:{shopName:'Shop',currency:'грн',lang:'uk'}, products:[], orders:[], ads:[], reports:[] } } }, write(d){ localStorage.setItem(this.key, JSON.stringify(d)); }, reset(){ localStorage.removeItem(this.key); } };
     let db = store.read();
 
-    // --- PWA install button & SW ---
-    let deferredPrompt; const installBtn = document.getElementById('installBtn');
-    window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'inline-flex'; });
-    installBtn?.addEventListener('click', async () => { if (!deferredPrompt) return; deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; installBtn.style.display = 'none'; });
-    if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(console.error); }); }
-
-    // --- AUTH logic ---
-    const authEl=$('#auth'), mainEl=$('#main'), modeBtn=$('#toggleMode'); let isSignup = (db.users||[]).length===0;
-    function renderAuth(){ authEl.classList.remove('hidden'); mainEl.classList.add('hidden'); $('#authModeLabel').textContent = isSignup? 'Створіть перший обліковий запис адміністратора.' : 'Увійдіть у свій обліковий запис.'; modeBtn.textContent = isSignup? 'Вже є акаунт? Увійти' : 'Немає акаунта? Зареєструватись'; lucide.createIcons(); }
-    function renderMain(){ authEl.classList.add('hidden'); mainEl.classList.remove('hidden'); lucide.createIcons(); fillProducts(); fillOrders(); fillAds(); updateKPIs(); refreshCharts(); buildProductStatsTable(); fillOrderProductSelects(); $('#shopName').value=db.settings.shopName||''; $('#currency').value=db.settings.currency||'грн'; $('#lang').value=db.settings.lang||'uk'; }
+    // AUTH
+    const authEl=$('#auth'), mainEl=$('#main'), modeBtn=$('#toggleMode'); let isSignup = db.users.length===0;
+    function renderAuth(){ authEl.classList.remove('hidden'); mainEl.classList.add('hidden'); $('#authModeLabel').textContent = isSignup? 'Створіть перший обліковий запис адміністратора.' : 'Увійдіть у свій обліковий запис.'; modeBtn.textContent = isSignup? 'Вже є акаунт? Увійти' : 'Немає акаунта? Зареєструватись'; }
+    function renderMain(){ authEl.classList.add('hidden'); mainEl.classList.remove('hidden'); lucide.createIcons(); fillProducts(); fillOrders(); fillAds(); updateKPIs(); refreshCharts(); buildProductStatsTable(); fillOrderProductSelects(); }
     modeBtn.addEventListener('click', ()=>{ isSignup=!isSignup; renderAuth(); });
     $('#authSubmit').addEventListener('click', ()=>{ const email=$('#authEmail').value.trim(); const password=$('#authPassword').value; if(!email||!password){alert('Введіть email та пароль');return;} if(isSignup){ db.users.push({id:uid(),email,passwordHash:btoa(password)}); db.session={email}; store.write(db); renderMain(); } else { const u=db.users.find(x=>x.email===email && x.passwordHash===btoa(password)); if(!u){alert('Невірні дані');return;} db.session={email}; store.write(db); renderMain(); } });
     $('#logoutBtn').addEventListener('click', ()=>{ db.session=null; store.write(db); renderAuth(); });
-
-    // If session exists -> go to app
-    if (db.session && db.session.email) { renderMain(); } else { renderAuth(); }
 
     // Tabs
     $$('.tab-btn').forEach(btn=>{ btn.addEventListener('click', ()=>{ $$('.tab-btn').forEach(b=>b.classList.remove('active','ring','ring-primary-200')); btn.classList.add('active','ring','ring-primary-200'); const tab=btn.dataset.tab; $$('.panel').forEach(p=>p.classList.add('hidden')); $(`[data-panel="${tab}"]`).classList.remove('hidden'); if(tab==='dashboard'){ refreshCharts(); updateKPIs(); buildProductStatsTable(); } if(tab==='orders'){ fillOrderProductSelects(); } }); });
@@ -472,6 +461,9 @@
     function generateDailyReport(dateStr){ const day=dateStr; const orders=db.orders.filter(o=> o.date===day); const ordersCount=orders.length; const ordersSum=orders.reduce((s,o)=> s + o.items.reduce((acc,i)=>{ const p=db.products.find(p=>p.id===i.productId); const v=p?.variants.find(v=>v.id===i.variantId); return acc + (v? v.price*i.qty:0); },0),0); const ads=db.ads.filter(a=> a.date===day); const adSpend=ads.reduce((s,a)=> s+a.spend,0); const leads=ads.reduce((s,a)=> s+(a.leads||0),0); const dayStats=calcStats(new Date(day), new Date(day)); const potentialProfit=dayStats.revenue - dayStats.cogs - adSpend; const upsell=dayStats.upsellSum; const n=(db.reports?.length||0)+1; const niceDate=day.slice(8,10)+'.'+day.slice(5,7); const upsellText=upsell>0? `${upsell.toLocaleString('uk-UA')} ${db.settings.currency}` : '—'; const text=`№${n}\nДата: ${niceDate}\nЗаявок за день: ${leads||0}\nОформлено замовлень: ${ordersCount}\nЗамовлень на суму: ${ordersSum.toLocaleString('uk-UA')} ${db.settings.currency}\nДопродажі: ${upsellText}\nРекламний бюджет: ${adSpend.toLocaleString('uk-UA')} ${db.settings.currency}\nПотенційний прибуток: ${potentialProfit>=0?'+':''}${potentialProfit.toLocaleString('uk-UA')} ${db.settings.currency}`; if(!db.reports) db.reports=[]; db.reports.push({id:uid(),date:day,text}); store.write(db); return text; }
     $('#applyRange').addEventListener('click', ()=>{ updateKPIs(); refreshCharts(); buildProductStatsTable(); });
     $('#generateReportBtn').addEventListener('click', ()=>{ const d=prompt('Дата звіту (YYYY-MM-DD)', new Date().toISOString().slice(0,10)); if(!d) return; const txt=generateDailyReport(d); navigator.clipboard?.writeText(txt).catch(()=>{}); alert(txt+'\n\nТекст скопійовано в буфер обміну.'); });
+
+    function init(){ $('#shopName').value=db.settings.shopName||''; $('#currency').value=db.settings.currency||'грн'; $('#lang').value=db.settings.lang||'uk'; if(db.session){ renderMain(); } else { renderAuth(); } }
+    init();
   </script>
 </body>
 </html>
